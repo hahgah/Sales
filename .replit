@@ -1,0 +1,14 @@
+entrypoint = "app.py"
+modules = ["python-3.12"]
+run = "streamlit run app.py --server.address 0.0.0.0 --server.port 8080 --server.headless true --server.enableCORS=false --server.enableWebsocketCompression=false"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "streamlit run app.py --server.address 0.0.0.0 --server.port 8080 --server.headless true --server.enableCORS=false --server.enableWebsocketCompression=false"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 8080
+externalPort = 80
